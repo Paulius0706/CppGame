@@ -15,12 +15,14 @@ out vec2 vUV;
 
 void main()
 {
-    gl_Position = vec2(
-        PositionSize.x/WindowSize.x + aPosition.x*PositionSize.z/WindowSize.x, 
-        PositionSize.y/WindowSize.y + aPosition.y*PositionSize.w/WindowSize.y);
-    vUV = vec2(
-        UVPositionSize.x/TextureSize.x + aUV.x*UVPositionSize.z/TextureSize.x, 
-        UVPositionSize.y/TextureSize.y + aUV.y*UVPositionSize.w/TextureSize.y);
+    gl_Position = vec4(
+        2*PositionSize.x/WindowSize.x - 1 + 2*aPosition.x*PositionSize.z/WindowSize.x, 
+        2*PositionSize.y/WindowSize.y - 1 + 2*aPosition.y*PositionSize.w/WindowSize.y,
+        aPosition.z,1);
+    vUV = vec2(aUV.x, aUV.y);
+    //vUV = vec2(
+    //    UVPositionSize.x/TextureSize.x + aUV.x*UVPositionSize.z/TextureSize.x, 
+    //    UVPositionSize.y/TextureSize.y + aUV.y*UVPositionSize.w/TextureSize.y);
     vColor = aColor;
 
 }  

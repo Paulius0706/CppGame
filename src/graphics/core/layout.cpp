@@ -39,7 +39,7 @@ class Layout
         }
         void render(){
             if (EBO_ptr) {
-                glDrawElements(GL_TRIANGLES, vertex_Count, GL_UNSIGNED_INT, 0);
+                glDrawElements(GL_TRIANGLES, indices_Count, GL_UNSIGNED_INT, 0);
             } else {
                 glDrawArrays(GL_TRIANGLES, 0, vertex_Count);
             }

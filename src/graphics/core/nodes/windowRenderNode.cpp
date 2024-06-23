@@ -1,8 +1,8 @@
 #ifndef WindowRenderNode_CPP
 #define WindowRenderNode_CPP
 
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <functional>
 #include <iostream>
 #include <thread>
@@ -13,16 +13,16 @@
 
 class WindowRenderNode : public AbstractRenderNode {
 public:
-    static int SCR_HEIGHT;
-    static int SCR_WIDTH;
+    static int HEIGHT;
+    static int WIDTH;
     bool finished = false;
     bool loaded = false;
 protected:
     GLFWwindow* window;
     std::thread thread;
     WindowRenderNode(int width, int height) : AbstractRenderNode(){
-        SCR_WIDTH = width;
-        SCR_HEIGHT = height;
+        WIDTH = width;
+        HEIGHT = height;
         thread = std::thread(&windowRenderLoop,this);
     }
     void load() override{
@@ -79,7 +79,7 @@ private:
 
         // glfw window creation
         // --------------------
-        GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+        GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "LearnOpenGL", NULL, NULL);
         if (window == NULL)
         {
             std::cout << "Failed to create GLFW window" << std::endl;
@@ -103,12 +103,12 @@ private:
     
 };
 
-int WindowRenderNode::SCR_WIDTH = 0;
-int WindowRenderNode::SCR_HEIGHT = 0;
+int WindowRenderNode::WIDTH = 0;
+int WindowRenderNode::HEIGHT = 0;
 void WindowRenderNode::onNodeWindowResize(GLFWwindow* window, int width, int height)
 {
-    WindowRenderNode::SCR_WIDTH = width;
-    WindowRenderNode::SCR_HEIGHT = height;
+    WindowRenderNode::WIDTH = width;
+    WindowRenderNode::HEIGHT = height;
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);

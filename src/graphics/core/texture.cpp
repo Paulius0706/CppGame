@@ -16,13 +16,10 @@ public:
     int height; 
     Texture(): width(0), height(0), texture_ptr(0), nrChannels(0) {}
     void load(const char* path){
-        // load and create a texture 
-        // -------------------------
-        // texture 1
-        // ---------
+
         glGenTextures(1, &texture_ptr);
         glBindTexture(GL_TEXTURE_2D, texture_ptr); 
-         // set the texture wrapping parameters
+        // set the texture wrapping parameters
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         // set texture filtering parameters

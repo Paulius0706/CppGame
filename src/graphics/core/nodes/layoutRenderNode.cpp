@@ -58,12 +58,12 @@ protected:
 
     
 public:
-    bool addUniformObject(UniformObject uniformObject){
+    bool addUniformObject(UniformObject* uniformObject){
         bool result = true;
         m_mutex->lock();
         try{
-            std::string key = ToString(reinterpret_cast<size_t>(&uniformObject));
-            uniformObjects[key] = &uniformObject;
+            std::string key = ToString(reinterpret_cast<size_t>(uniformObject));
+            uniformObjects[key] = uniformObject;
         }
         catch(...){
             result = false;
@@ -71,11 +71,11 @@ public:
         m_mutex->unlock();
         return result;
     }
-    bool removeUniformObject(UniformObject uniformObject){
+    bool removeUniformObject(UniformObject* uniformObject){
         bool result = true;
         m_mutex->lock();
         try{
-            std::string key = ToString(reinterpret_cast<size_t>(&uniformObject));
+            std::string key = ToString(reinterpret_cast<size_t>(uniformObject));
             uniformObjects.erase(key);
         }
         catch(...){

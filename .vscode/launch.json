@@ -34,8 +34,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Paulius Sinkunas/Desktop/Projects/Games/CGame/src",
-      "program": "c:/Users/Paulius Sinkunas/Desktop/Projects/Games/CGame/src/build/Debug/outDebug",
+      "cwd": "${workspaceFolder}\\bin",
+      "program": "build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -20,18 +20,20 @@ public:
             UIVertex::AssignAtributes
             ,new UIVertex[4]{
                 // positions         // colors
-                {{ 0.5f,  0.5f, 0.0f},  {1.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},  
-                {{ 0.5f, -0.5f, 0.0f},  {0.0f, 1.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},  
-                {{-0.5f, -0.5f, 0.0f},  {0.0f, 0.0f, 1.0f, 1.0f}, {1.0f, 1.0f}},  
-                {{-0.5f,  0.5f, 0.0f},  {0.0f, 0.0f, 1.0f, 1.0f}, {1.0f, 1.0f}} 
+                {{ 1.0f,  1.0f, 0.0f},  {1.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},  
+                {{ 1.0f,  0.0f, 0.0f},  {0.0f, 1.0f, 0.0f, 1.0f}, {1.0f, 0.0f}},  
+                {{ 0.0f,  0.0f, 0.0f},  {0.0f, 0.0f, 1.0f, 1.0f}, {0.0f, 0.0f}},  
+                {{ 0.0f,  1.0f, 0.0f},  {0.0f, 0.0f, 1.0f, 1.0f}, {0.0f, 1.0f}} 
             }
             ,4
-            ,new int[6] {0, 1, 3, 1, 2, 3}
+            ,new int[6] {3, 0, 1, 2, 1, 3}
             ,6);
         LayoutRenderNode::layout = &triangle;
     }
 };
-
+//  3    0
+//      
+//  2    1
 
 class UIShaderNode : public ShaderRenderNode
 {
@@ -43,17 +45,17 @@ public:
     QuadLayoutNode quadLayoutNode;
     UIShaderNode() : ShaderRenderNode(), uiShader(Shader()), quadLayoutNode(QuadLayoutNode()){}
     void load() override{
-        uiShader.load(".\\Shaders\\UserInterfaceShader\\vertex.vs", ".\\Shaders\\UserInterfaceShader\\fragment.fs");
+        uiShader.load(".\\Shaders\\UserInterfaceShader\\vertex.vs", ".\\Shaders\\UserInterfaceShader\\fragment.vs");
         ShaderRenderNode::shader = &uiShader;
         
-        texture.load(".\\Textures\\openGLBasecontainer");
+        texture.load(".\\Textures\\openGLBasecontainer.jpg");
 
         quadLayoutNode.load();
         ShaderRenderNode::AbstractRenderNode::children.push_back(&quadLayoutNode);
     }
     void loadStaticUniforms() override{
         texture.use();
-        uiShader.setVec2("WindowSize", glm::vec2(WindowRenderNode::SCR_WIDTH,WindowRenderNode::SCR_HEIGHT));
+        uiShader.setVec2("WindowSize", glm::vec2(WindowRenderNode::WIDTH,WindowRenderNode::HEIGHT));
         uiShader.setVec2("TextureSize", glm::vec2(texture.width,texture.height));
         
         //uniform vec2 WindowSize;

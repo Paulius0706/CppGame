@@ -14,7 +14,7 @@ class MainWindow : public WindowRenderNode
 public:
     SceneShaderNode sceneShaderNode;
     UIShaderNode uiShaderNode;
-    MainWindow() : WindowRenderNode(800,600), sceneShaderNode(SceneShaderNode()), uiShaderNode(UIShaderNode()){}
+    MainWindow(int width, int height) : WindowRenderNode(width,height), sceneShaderNode(SceneShaderNode()), uiShaderNode(UIShaderNode()){}
     void load() override{
         //sceneShaderNode.load();
         //WindowRenderNode::AbstractRenderNode::children.push_back(&sceneShaderNode);
