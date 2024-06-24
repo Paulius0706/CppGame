@@ -13,16 +13,16 @@ MainWindow* mainWindow;
 int main(int argc, char * argv[])
 {
     mainWindow = new MainWindow(800,600);
-    
-    std::this_thread::sleep_for(std::chrono::seconds(4));
-    while (!mainWindow->loaded){}
+    while (!mainWindow->loaded){std::this_thread::sleep_for(std::chrono::seconds(1));}
     std::cout << "Windows loaded" <<std::endl;
-    UIBoxUniformObject uniformObject1 = UIBoxUniformObject(mainWindow, glm::vec2(100,100),glm::vec2(100,100),glm::vec2(0,0),glm::vec2(100,100));
+    UIBoxUniformObject uniformObject1 = UIBoxUniformObject(mainWindow, 
+        glm::vec2(100,100),
+        glm::vec2(400,400),
+        glm::vec2(0,0),
+        glm::vec2(100,100),
+         glm::vec4(1,1,1,0));
     mainWindow->uiShaderNode.quadLayoutNode.addUniformObject(&uniformObject1);
-    while (!mainWindow->finished)
-    {
-        std::this_thread::sleep_for(std::chrono::seconds(4));
-    }
+    while (!mainWindow->finished){std::this_thread::sleep_for(std::chrono::seconds(1));}
     
     return 0;
 }

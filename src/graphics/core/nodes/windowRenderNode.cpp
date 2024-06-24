@@ -53,7 +53,7 @@ private:
             // render
             // ------
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             render();
 
 
@@ -96,6 +96,14 @@ private:
             std::cout << "Failed to initialize GLAD" << std::endl;
             return NULL;
         }
+
+        // configure global opengl state
+        // -----------------------------
+        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
         glfwSwapInterval(1);
         return window;
     }

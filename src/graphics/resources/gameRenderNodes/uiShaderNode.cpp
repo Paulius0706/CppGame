@@ -20,10 +20,10 @@ public:
             UIVertex::AssignAtributes
             ,new UIVertex[4]{
                 // positions         // colors
-                {{ 1.0f,  1.0f, 0.0f},  {1.0f, 0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},  
-                {{ 1.0f,  0.0f, 0.0f},  {0.0f, 1.0f, 0.0f, 1.0f}, {1.0f, 0.0f}},  
-                {{ 0.0f,  0.0f, 0.0f},  {0.0f, 0.0f, 1.0f, 1.0f}, {0.0f, 0.0f}},  
-                {{ 0.0f,  1.0f, 0.0f},  {0.0f, 0.0f, 1.0f, 1.0f}, {0.0f, 1.0f}} 
+                {{ 1.0f,  1.0f, 0.0f},  /*{1.0f, 0.0f, 0.0f, 1.0f},*/ {1.0f, 1.0f}},  
+                {{ 1.0f,  0.0f, 0.0f},  /*{0.0f, 1.0f, 0.0f, 1.0f},*/ {1.0f, 0.0f}},  
+                {{ 0.0f,  0.0f, 0.0f},  /*{0.0f, 0.0f, 1.0f, 1.0f},*/ {0.0f, 0.0f}},  
+                {{ 0.0f,  1.0f, 0.0f},  /*{0.0f, 0.0f, 1.0f, 1.0f},*/ {0.0f, 1.0f}} 
             }
             ,4
             ,new int[6] {3, 0, 1, 2, 1, 3}
@@ -48,7 +48,8 @@ public:
         uiShader.load(".\\Shaders\\UserInterfaceShader\\vertex.vs", ".\\Shaders\\UserInterfaceShader\\fragment.vs");
         ShaderRenderNode::shader = &uiShader;
         
-        texture.load(".\\Textures\\openGLBasecontainer.jpg");
+        texture.load(".\\Textures\\CONSOLA.png");
+        //texture.load(".\\Textures\\Fonts\\ComicSansMSAlpha.png");
 
         quadLayoutNode.load();
         ShaderRenderNode::AbstractRenderNode::children.push_back(&quadLayoutNode);
